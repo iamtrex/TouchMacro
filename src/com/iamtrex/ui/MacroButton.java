@@ -2,15 +2,30 @@ package com.iamtrex.ui;
 
 import com.iamtrex.model.Macro;
 
-public class MacroButton extends Button {
-    private String name;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-    public MacroButton(String name) {
-        this.name = name;
-        this.setText(name);
+/**
+ * MacroButton that runs a macro when clicked.
+ *
+ */
+public class MacroButton extends Button implements ActionListener {
+
+    private Macro registeredMacro;
+
+    public MacroButton(Macro registeredMacro){
+        this.registeredMacro = registeredMacro;
+
+        this.setText(registeredMacro.getMacroName());
+        this.addActionListener(this);
     }
 
-    public String getName(){
-        return name;
+    public Macro getRegisteredMacro(){
+        return registeredMacro;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

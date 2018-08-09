@@ -3,20 +3,32 @@ package com.iamtrex.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a keypress Macro.
+ */
 public class Macro {
-    private List<Action> actions;
-    public Macro(List<Action> actions){
-        this.actions = actions;
-    }
-    public Macro(){
-        actions = new ArrayList<>();
+    private List<KeyAction> keyActions;
+
+    private String actionJSON;
+    private String macroName;
+
+    /**
+     *
+     * @param s - JSON form of Actions.
+     */
+    public Macro(String actionJSON, String macroName){
+        this.actionJSON = actionJSON;
+        this.macroName = macroName;
+
+        keyActions = new ArrayList<>();
+
     }
 
-    public void addAction(Action a){
-        actions.add(a);
-    }
-    public List<Action> getActions(){
-        return actions;
+    public String getActionJSON(){
+        return actionJSON;
     }
 
+    public String getMacroName(){
+        return macroName;
+    }
 }
